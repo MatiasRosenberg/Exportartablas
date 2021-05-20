@@ -37,6 +37,8 @@
             this.lblhasta = new System.Windows.Forms.Label();
             this.mtxtdesde = new System.Windows.Forms.MaskedTextBox();
             this.mtxthasta = new System.Windows.Forms.MaskedTextBox();
+            this.txtlista = new System.Windows.Forms.TextBox();
+            this.lbllista = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,11 +129,29 @@
             this.mtxthasta.TabIndex = 11;
             this.mtxthasta.ValidatingType = typeof(System.DateTime);
             // 
+            // txtlista
+            // 
+            this.txtlista.Location = new System.Drawing.Point(277, 17);
+            this.txtlista.Name = "txtlista";
+            this.txtlista.Size = new System.Drawing.Size(100, 20);
+            this.txtlista.TabIndex = 12;
+            // 
+            // lbllista
+            // 
+            this.lbllista.AutoSize = true;
+            this.lbllista.Location = new System.Drawing.Point(233, 20);
+            this.lbllista.Name = "lbllista";
+            this.lbllista.Size = new System.Drawing.Size(29, 13);
+            this.lbllista.TabIndex = 13;
+            this.lbllista.Text = "Lista";
+            // 
             // Exportar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbllista);
+            this.Controls.Add(this.txtlista);
             this.Controls.Add(this.mtxthasta);
             this.Controls.Add(this.mtxtdesde);
             this.Controls.Add(this.lblhasta);
@@ -160,6 +180,8 @@
         private System.Windows.Forms.Label lblhasta;
         private System.Windows.Forms.MaskedTextBox mtxtdesde;
         private System.Windows.Forms.MaskedTextBox mtxthasta;
+        private System.Windows.Forms.TextBox txtlista;
+        private System.Windows.Forms.Label lbllista;
     }
 }
 

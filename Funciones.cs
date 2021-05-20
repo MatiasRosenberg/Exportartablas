@@ -51,5 +51,26 @@ namespace Conexion
             datagrid.DataMember = "store";
 
         }
+
+        public void Listaarticulos(TextBox Lista, DataGridView datagrid)
+        {
+            //llamo al store
+            string store;
+            store = "sp_Lista_articulos";
+            SqlConnection cnn = DbConnection.getDBConnection();
+            SqlDataAdapter da = new SqlDataAdapter(store, cnn);
+            DataSet ds = new DataSet();
+
+            //parametros
+            da.SelectCommand.CommandType = System.Data.CommandType.StoredProcedure;
+            da.SelectCommand.Parameters.AddWithValue("@lista", Lista.Text.ToString());
+            da.Fill(ds, "store");
+            cnn.Close();
+
+            //mostrar en tabla
+            datagrid.DataSource = ds;
+            datagrid.DataMember = "store";
+
+        }
     }
 }

@@ -19,20 +19,47 @@ namespace Conexion
 {
     public partial class Exportar : Form
     {
-        
 
+        
+        
         public Exportar()
         {
             InitializeComponent();
         }
-        
 
+        RegistryKey rk = Registry.CurrentUser.OpenSubKey("Software\\InTime\\ItPyme");
         private void Form1_Load(object sender, EventArgs e)
         {
-            cmb.Items.Add("Seleccione opcion");
-            cmb.Items.Add("Pedidos de clientes");
+            object valor = rk.GetValue("Instalacion");
+            string valorr = valor.ToString();
+            
+            Instalacion Nombre1 = new Instalacion();
+            Nombre1.Nombre = "Casa victor";
+            string Instalacion1 = Nombre1.Nombre.ToString();
 
-            cmb.SelectedItem = cmb.Items[0];
+            Instalacion Nombre2 = new Instalacion();
+            Nombre2.Nombre = "Candies";
+            string Instalacion2 = Nombre2.Nombre.ToString();
+
+            if (valorr == Instalacion1)
+            {
+                cmb.Items.Add("Seleccione opcion");
+                cmb.Items.Add("Pedidos de clientes");
+                cmb.SelectedItem = cmb.Items[0];
+            }
+            else if(valorr == Instalacion2)
+            {
+                cmb.Items.Add("Seleccione opcion");
+                cmb.Items.Add("Listado de articulos");
+                cmb.SelectedItem = cmb.Items[0];
+            }
+            else
+            {
+                MessageBox.Show("No se encuentra la instalacion");
+                this.Close();
+            }
+           
+           
         }
        
 
@@ -54,15 +81,39 @@ namespace Conexion
         {
             Funciones F = new Funciones();
 
-            if(cmb.SelectedIndex == 0)
+            object valor = rk.GetValue("Instalacion");
+            string valorr = valor.ToString();
+
+            Instalacion Nombre1 = new Instalacion();
+            Nombre1.Nombre = "Casa victor";
+            string Instalacion1 = Nombre1.Nombre.ToString();
+
+            Instalacion Nombre2 = new Instalacion();
+            Nombre2.Nombre = "Candies";
+            string Instalacion2 = Nombre2.Nombre.ToString();
+
+            if(valorr == Instalacion1)
             {
-                MessageBox.Show("Seleccione una opcion");
+                if (cmb.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Seleccione una opcion");
+                }
+                else if (cmb.SelectedIndex == 1)
+                {
+                    F.Pedidosdeclientes(mtxtdesde, mtxthasta, grilla);
+                }
             }
-            else if (cmb.SelectedIndex == 1)
+            else if(valorr == Instalacion2)
             {
-                F.Pedidosdeclientes(mtxtdesde, mtxthasta, grilla);
+                if(cmb.SelectedIndex == 0)
+                {
+                    MessageBox.Show("Seleccione una opcion");
+                }
+                else if(cmb.SelectedIndex == 1)
+                {
+                    F.Listaarticulos(txtlista, grilla);
+                }
             }
-            
         }
 
         private void grilla_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -97,22 +148,57 @@ namespace Conexion
 
         private void cmb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmb.SelectedIndex == 1)
+            object valor = rk.GetValue("Instalacion");
+            string valorr = valor.ToString();
+
+            Instalacion Nombre1 = new Instalacion();
+            Nombre1.Nombre = "Casa victor";
+            string Instalacion1 = Nombre1.Nombre.ToString();
+
+            Instalacion Nombre2 = new Instalacion();
+            Nombre2.Nombre = "Candies";
+            string Instalacion2 = Nombre2.Nombre.ToString();
+
+            if(valorr == Instalacion1)
             {
-                mtxtdesde.Visible = true;
-                lbldesde.Visible = true;
-                mtxthasta.Visible = true;
-                lblhasta.Visible = true;
-                mtxtdesde.Focus();
+                if (cmb.SelectedIndex == 1)
+                {
+                    mtxtdesde.Visible = true;
+                    lbldesde.Visible = true;
+                    mtxthasta.Visible = true;
+                    lblhasta.Visible = true;
+                    mtxtdesde.Focus();
+                }
+                else
+                {
+                    mtxtdesde.Visible = false;
+                    mtxtdesde.Text = "";
+                    lbldesde.Visible = false;
+                    mtxthasta.Visible = false;
+                    mtxthasta.Text = "";
+                    lblhasta.Visible = false;
+                    lbllista.Visible = false;
+                    txtlista.Visible = false;
+                }
             }
-            else
+            else if(valorr == Instalacion2)
             {
-                mtxtdesde.Visible = false;
-                mtxtdesde.Text = "";
-                lbldesde.Visible = false;
-                mtxthasta.Visible = false;
-                mtxthasta.Text = "";
-                lblhasta.Visible = false;
+                if (cmb.SelectedIndex == 1)
+                {
+                    lbllista.Visible = true;
+                    txtlista.Visible = true;
+                }
+                else
+                {
+                    mtxtdesde.Visible = false;
+                    mtxtdesde.Text = "";
+                    lbldesde.Visible = false;
+                    mtxthasta.Visible = false;
+                    mtxthasta.Text = "";
+                    lblhasta.Visible = false;
+                    lbllista.Visible = false;
+                    txtlista.Visible = false;
+                }
             }
         }
     }

@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exportartablas", "Exportartablas.csproj", "{02D788E8-F776-4BF1-825F-C8249EFB4685}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BE639F87-9086-4DCF-BBD2-B4452ED81C2A}"
-	ProjectSection(SolutionItems) = preProject
-		Iconos\ET.ico = Iconos\ET.ico
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

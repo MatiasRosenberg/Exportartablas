@@ -11,6 +11,17 @@ namespace Conexion
 {
     public class Instalacion
     {
-        public string Nombre;
+        static RegistryKey rk = Registry.CurrentUser.OpenSubKey("Software\\InTime\\ItPyme");
+        public static object valor = rk.GetValue("Instalacion").ToString();
+
+        public static object GetValor()
+        {
+            return valor;
+        }
+
+        public static void SetValor(object value)
+        {
+            valor = value;
+        }
     }
 }

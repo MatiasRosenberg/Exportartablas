@@ -27,39 +27,30 @@ namespace Conexion
             InitializeComponent();
         }
 
-        RegistryKey rk = Registry.CurrentUser.OpenSubKey("Software\\InTime\\ItPyme");
+        string Valor = (string)Instalacion.GetValor();
         private void Form1_Load(object sender, EventArgs e)
         {
-            object valor = rk.GetValue("Instalacion");
-            string valorr = valor.ToString();
             
-            Instalacion Nombre1 = new Instalacion();
-            Nombre1.Nombre = "Casa victor";
-            string Instalacion1 = Nombre1.Nombre.ToString();
 
-            Instalacion Nombre2 = new Instalacion();
-            Nombre2.Nombre = "Candies";
-            string Instalacion2 = Nombre2.Nombre.ToString();
+            switch (Valor)
+            {
+                case "casavictor":
+                    cmb.Items.Add("Seleccione opcion");
+                    cmb.Items.Add("Pedidos de clientes");
+                    cmb.SelectedItem = cmb.Items[0];
+                    break;
+                case "candies":
+                    cmb.Items.Add("Seleccione opcion");
+                    cmb.Items.Add("Listado de articulos");
+                    cmb.SelectedItem = cmb.Items[0];
+                    break;
+                default:
+                    MessageBox.Show("No se encuentra la instalacion");
+                    Close();
+                    break;
+            }
 
-            if (valorr == Instalacion1)
-            {
-                cmb.Items.Add("Seleccione opcion");
-                cmb.Items.Add("Pedidos de clientes");
-                cmb.SelectedItem = cmb.Items[0];
-            }
-            else if(valorr == Instalacion2)
-            {
-                cmb.Items.Add("Seleccione opcion");
-                cmb.Items.Add("Listado de articulos");
-                cmb.SelectedItem = cmb.Items[0];
-            }
-            else
-            {
-                MessageBox.Show("No se encuentra la instalacion");
-                this.Close();
-            }
-           
-           
+
         }
        
 
@@ -81,38 +72,30 @@ namespace Conexion
         {
             Funciones F = new Funciones();
 
-            object valor = rk.GetValue("Instalacion");
-            string valorr = valor.ToString();
 
-            Instalacion Nombre1 = new Instalacion();
-            Nombre1.Nombre = "Casa victor";
-            string Instalacion1 = Nombre1.Nombre.ToString();
 
-            Instalacion Nombre2 = new Instalacion();
-            Nombre2.Nombre = "Candies";
-            string Instalacion2 = Nombre2.Nombre.ToString();
-
-            if(valorr == Instalacion1)
+            switch (Valor)
             {
-                if (cmb.SelectedIndex == 0)
-                {
-                    MessageBox.Show("Seleccione una opcion");
-                }
-                else if (cmb.SelectedIndex == 1)
-                {
-                    F.Pedidosdeclientes(mtxtdesde, mtxthasta, grilla);
-                }
-            }
-            else if(valorr == Instalacion2)
-            {
-                if(cmb.SelectedIndex == 0)
-                {
-                    MessageBox.Show("Seleccione una opcion");
-                }
-                else if(cmb.SelectedIndex == 1)
-                {
-                    F.Listaarticulos(txtlista, grilla);
-                }
+                case "casavictor":
+                    if (cmb.SelectedIndex == 0)
+                    {
+                        MessageBox.Show("Seleccione una opcion");
+                    }
+                    else if (cmb.SelectedIndex == 1)
+                    {
+                        F.Pedidosdeclientes(mtxtdesde, mtxthasta, grilla);
+                    }
+                    break;
+                case "candies":
+                    if (cmb.SelectedIndex == 0)
+                    {
+                        MessageBox.Show("Seleccione una opcion");
+                    }
+                    else if (cmb.SelectedIndex == 1)
+                    {
+                        F.Listaarticulos(txtlista, grilla);
+                    }
+                    break;
             }
         }
 
@@ -148,58 +131,70 @@ namespace Conexion
 
         private void cmb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            object valor = rk.GetValue("Instalacion");
-            string valorr = valor.ToString();
-
-            Instalacion Nombre1 = new Instalacion();
-            Nombre1.Nombre = "Casa victor";
-            string Instalacion1 = Nombre1.Nombre.ToString();
-
-            Instalacion Nombre2 = new Instalacion();
-            Nombre2.Nombre = "Candies";
-            string Instalacion2 = Nombre2.Nombre.ToString();
-
-            if(valorr == Instalacion1)
+            switch (Valor)
             {
-                if (cmb.SelectedIndex == 1)
-                {
-                    mtxtdesde.Visible = true;
-                    lbldesde.Visible = true;
-                    mtxthasta.Visible = true;
-                    lblhasta.Visible = true;
-                    mtxtdesde.Focus();
-                }
-                else
-                {
-                    mtxtdesde.Visible = false;
-                    mtxtdesde.Text = "";
-                    lbldesde.Visible = false;
-                    mtxthasta.Visible = false;
-                    mtxthasta.Text = "";
-                    lblhasta.Visible = false;
-                    lbllista.Visible = false;
-                    txtlista.Visible = false;
-                }
+                case "casavictor":
+                    if (cmb.SelectedIndex == 1)
+                    {
+                        mtxtdesde.Visible = true;
+                        lbldesde.Visible = true;
+                        mtxthasta.Visible = true;
+                        lblhasta.Visible = true;
+                        mtxtdesde.Focus();
+                    }
+                    else
+                    {
+                        mtxtdesde.Visible = false;
+                        mtxtdesde.Text = "";
+                        lbldesde.Visible = false;
+                        mtxthasta.Visible = false;
+                        mtxthasta.Text = "";
+                        lblhasta.Visible = false;
+                        lbllista.Visible = false;
+                        txtlista.Visible = false;
+                    }
+                    break;
+                case "candies":
+                    if (cmb.SelectedIndex == 1)
+                    {
+                        lbllista.Visible = true;
+                        txtlista.Visible = true;
+                        txtlista.Focus();
+                    }
+                    else
+                    {
+                        mtxtdesde.Visible = false;
+                        mtxtdesde.Text = "";
+                        lbldesde.Visible = false;
+                        mtxthasta.Visible = false;
+                        mtxthasta.Text = "";
+                        lblhasta.Visible = false;
+                        lbllista.Visible = false;
+                        txtlista.Visible = false;
+                    }
+                    break;
             }
-            else if(valorr == Instalacion2)
+        }
+
+        private void txtlista_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
             {
-                if (cmb.SelectedIndex == 1)
-                {
-                    lbllista.Visible = true;
-                    txtlista.Visible = true;
-                }
-                else
-                {
-                    mtxtdesde.Visible = false;
-                    mtxtdesde.Text = "";
-                    lbldesde.Visible = false;
-                    mtxthasta.Visible = false;
-                    mtxthasta.Text = "";
-                    lblhasta.Visible = false;
-                    lbllista.Visible = false;
-                    txtlista.Visible = false;
-                }
+
+                e.Handled = true;
+
+                return;
             }
+        }
+
+        private void txtlista_Leave(object sender, EventArgs e)
+        {
+            int cuantos0 = 3;
+            string zeros;
+            zeros = new string('0', Convert.ToInt32(cuantos0));
+
+            txtlista.Text = string.Format("{0:" + zeros + "}", Convert.ToInt32(txtlista.Text));
+            btnprocesar.Focus();
         }
     }
 }

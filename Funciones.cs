@@ -14,22 +14,6 @@ namespace Conexion
 {
     class Funciones
     {
-        public void Listadostockprecios(DataGridView dataGrid)
-        {
-            SqlConnection cnn = DbConnection.getDBConnection();
-            DataSet ds = new DataSet();
-            string consulta = "sp_Listado_stock_precios";
-            SqlDataAdapter da = new SqlDataAdapter(consulta, cnn);
-
-            da.SelectCommand.CommandType = System.Data.CommandType.StoredProcedure;
-            da.Fill(ds, "consulta");
-            cnn.Close();
-
-            dataGrid.DataSource = ds;
-            dataGrid.DataMember = "consulta";
-
-        }
-
         public void Pedidosdeclientes(MaskedTextBox desde, MaskedTextBox Hasta, DataGridView datagrid)
         {
             //llamo al store

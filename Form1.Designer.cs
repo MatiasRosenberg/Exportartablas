@@ -132,9 +132,12 @@
             // txtlista
             // 
             this.txtlista.Location = new System.Drawing.Point(277, 17);
+            this.txtlista.MaxLength = 3;
             this.txtlista.Name = "txtlista";
             this.txtlista.Size = new System.Drawing.Size(100, 20);
             this.txtlista.TabIndex = 12;
+            this.txtlista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtlista_KeyPress);
+            this.txtlista.Leave += new System.EventHandler(this.txtlista_Leave);
             // 
             // lbllista
             // 

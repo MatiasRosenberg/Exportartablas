@@ -38,12 +38,23 @@ namespace Conexion
                     cmb.Items.Add("Seleccione opcion");
                     cmb.Items.Add("Pedidos de clientes");
                     cmb.SelectedItem = cmb.Items[0];
-                    break;
+                    return;
                 case "candies":
                     cmb.Items.Add("Seleccione opcion");
                     cmb.Items.Add("Listado de articulos");
                     cmb.SelectedItem = cmb.Items[0];
-                    break;
+                    return;
+                case "richam":
+                    cmb.Items.Add("Seleccione opcion");
+                    cmb.Items.Add("Listado clientes");
+                    cmb.Items.Add("Listado proveedores");
+                    lbllista.Visible = false;
+                    lbldesde.Visible = false;
+                    lblhasta.Visible = false;
+                    mtxtdesde.Visible = false;
+                    mtxthasta.Visible = false;
+                    txtlista.Visible = false;
+                    return;
                 default:
                     MessageBox.Show("No se encuentra la instalacion");
                     Close();
@@ -85,7 +96,7 @@ namespace Conexion
                     {
                         F.Pedidosdeclientes(mtxtdesde, mtxthasta, grilla);
                     }
-                    break;
+                    return;
                 case "candies":
                     if (cmb.SelectedIndex == 0)
                     {
@@ -95,7 +106,21 @@ namespace Conexion
                     {
                         F.Listaarticulos(txtlista, grilla);
                     }
-                    break;
+                    return;
+                case "richam":
+                    if(cmb.SelectedIndex == 0)
+                    {
+                        MessageBox.Show("Seleccione una opcion");
+                    }
+                    else if (cmb.SelectedIndex == 1)
+                    {
+                        F.Listaclientes(grilla);
+                    }
+                    else if(cmb.SelectedIndex == 2)
+                    {
+                        F.Listaproveedores(grilla);
+                    }
+                    return;
             }
         }
 
@@ -153,7 +178,7 @@ namespace Conexion
                         lbllista.Visible = false;
                         txtlista.Visible = false;
                     }
-                    break;
+                    return;
                 case "candies":
                     if (cmb.SelectedIndex == 1)
                     {
@@ -172,7 +197,7 @@ namespace Conexion
                         lbllista.Visible = false;
                         txtlista.Visible = false;
                     }
-                    break;
+                    return;         
             }
         }
 

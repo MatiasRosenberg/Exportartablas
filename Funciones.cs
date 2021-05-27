@@ -56,5 +56,39 @@ namespace Conexion
             datagrid.DataMember = "store";
 
         }
+
+        public void Listaproveedores(DataGridView datagrid)
+        {
+            string store;
+            store = "SP_LISTA_PROVEEDORES";
+            SqlConnection cnn = DbConnection.getDBConnection();
+            SqlDataAdapter da = new SqlDataAdapter(store, cnn);
+            DataSet ds = new DataSet();
+
+            da.Fill(ds, "store");
+            cnn.Close();
+
+            //mostrar en tabla
+            datagrid.DataSource = ds;
+            datagrid.DataMember = "store";
+
+        }
+
+        public void Listaclientes(DataGridView datagrid)
+        {
+            string store;
+            store = "SP_LISTA_CLIENTES";
+            SqlConnection cnn = DbConnection.getDBConnection();
+            SqlDataAdapter da = new SqlDataAdapter(store, cnn);
+            DataSet ds = new DataSet();
+
+            da.Fill(ds, "store");
+            cnn.Close();
+
+            //mostrar en tabla
+            datagrid.DataSource = ds;
+            datagrid.DataMember = "store";
+
+        }
     }
 }

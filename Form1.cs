@@ -32,7 +32,7 @@ namespace Conexion
         {
             
 
-            switch (Valor)
+            switch (Valor.ToLower())
             {
                 case "casavictor":
                     cmb.Items.Add("Seleccione opcion");
@@ -48,6 +48,7 @@ namespace Conexion
                     cmb.Items.Add("Seleccione opcion");
                     cmb.Items.Add("Listado clientes");
                     cmb.Items.Add("Listado proveedores");
+                    cmb.SelectedItem = cmb.Items[0];
                     lbllista.Visible = false;
                     lbldesde.Visible = false;
                     lblhasta.Visible = false;
@@ -60,8 +61,6 @@ namespace Conexion
                     Close();
                     break;
             }
-
-
         }
        
 
@@ -85,7 +84,7 @@ namespace Conexion
 
 
 
-            switch (Valor)
+            switch (Valor.ToLower())
             {
                 case "casavictor":
                     if (cmb.SelectedIndex == 0)
@@ -156,7 +155,7 @@ namespace Conexion
 
         private void cmb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (Valor)
+            switch (Valor.ToLower())
             {
                 case "casavictor":
                     if (cmb.SelectedIndex == 1)
